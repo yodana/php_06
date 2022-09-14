@@ -1,0 +1,16 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}E01Bundle:Login:login{% endblock %}
+
+{% block body %}
+{% if errors %}
+    {{ errors.messageKey }}
+{% endif %}
+<form action="{{path('login')}}" method="post">
+    <label for="username">Username:</label> 
+    <input type="text" name="_username" id="username">
+    <label for="password">Password</label>
+    <input type="text" name="_password" id="password">
+    <button>Connect</button>
+</form>    
+{% endblock %}

@@ -1,0 +1,34 @@
+<!DOCTYPE>
+<html>
+    <body>
+    {{message}}
+        <table style="border: 1px solid black;">
+        <tr>
+            <th style="border: 1px solid black;">Title</th>
+            <th style="border: 1px solid black;">Content</th>
+            <th style="border: 1px solid black;">Created</th>
+            <th style="border: 1px solid black;">Date</th>
+            <th style="border: 1px solid black;">Like</th>
+            <th style="border: 1px solid black;">Unlike</th>
+        </tr>
+        {% for t in post %}
+            <tr>
+                <td style="border: 1px solid black;">{{t.title}}</td>
+                <td style="border: 1px solid black;">{{t.content}}</td>
+                <td style="border: 1px solid black;">{{t.creator}}</td>
+                <td style="border: 1px solid black;">{{t.date}}</td>
+                 <td style="border: 1px solid black;">{{t.like}}</td>
+                <td style="border: 1px solid black;">{{t.unlike}}</td>
+                <a href="/e05/post/{{t.id}}/like"> <button>J'aime </button></a>
+                <a href="/e05/post/{{t.id}}/unlike"> <button>J'aime pas </button></a>
+                <a href="/e06/post/modif/{{t.id}}/"><button> Modifier</button></a>
+            </tr>
+        {% endfor %}
+        </table>
+        {% for t in post %}
+        {% if t.lastUser %}
+            <p> Last Modified by {{t.lastUser}} at {{t.lastCreated}}
+        {% endif %}
+        {% endfor %}
+    </body>
+</html>

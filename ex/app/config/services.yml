@@ -34,6 +34,11 @@ services:
         public: true
         bind:
             $authenticationUtils: '@security.authentication_utils'
+    E05Bundle\Controller\:
+        resource: '../../src/E05Bundle/Controller'
+        public: true
+        bind:
+            $authenticationUtils: '@security.authentication_utils'
     # add more services, or override services that need manual wiring
     # AppBundle\Service\ExampleService:
     #     arguments:

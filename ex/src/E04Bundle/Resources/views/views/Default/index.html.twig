@@ -1,0 +1,19 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block body %}
+<p>Welcome {{username}}</p>
+<button><a href="{{ logout_path() }}">Logout</a></button>
+<button><a href="/e03/create/">Create a publication</a></button>
+<br>
+        {% for t in post %}
+            <ol>
+                <li><a href="/e03/post/{{t.id}}/">{{t.title}}</a></li>
+                <li>{{t.creator}}</td>
+                <li>{{t.date}}</li>
+            </ol>
+        {% endfor %}
+{% endblock %}

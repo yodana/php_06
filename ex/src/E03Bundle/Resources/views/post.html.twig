@@ -1,0 +1,21 @@
+<!DOCTYPE>
+<html>
+    <body>
+        <table style="border: 1px solid black;">
+        <tr>
+            <th style="border: 1px solid black;">Title</th>
+            <th style="border: 1px solid black;">Content</th>
+            <th style="border: 1px solid black;">Created</th>
+            <th style="border: 1px solid black;">Date</th>
+        </tr>
+        {% for t in post %}
+            <tr>
+                <td style="border: 1px solid black;">{{t.title}}</td>
+                <td style="border: 1px solid black;">{{t.content}}</td>
+                <td style="border: 1px solid black;">{{t.creator}}</td>
+                <td style="border: 1px solid black;">{{t.date}}</td>
+            </tr>
+        {% endfor %}
+        </table>
+    </body>
+</html>

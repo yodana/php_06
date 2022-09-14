@@ -10,10 +10,18 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class LoginController extends Controller
 {
     /**
-     * @Route("/login/", name="login")
+     * @Route("/e01/login/", name="login")
      */
     public function loginAction(Request $request, AuthenticationUtils $authenticationUtils)
     {
+        if (isset($_SESSION['start']) && (time() - $_SESSION['start'] > 60)) {
+            session_unset(); 
+            session_destroy(); 
+        }
+        if ($this->isGranted('IS_AUTHENTICATED_FULLY')) {
+            return $this->redirectToRoute('homepage');
+        }
+        
         $errors = $authenticationUtils->getLastAuthenticationError();
         $lastUsername = $authenticationUtils->getLastUsername();
         return $this->render('E01Bundle:Login:login.html.twig', array(
@@ -21,8 +29,9 @@ class LoginController extends Controller
             "lastUsername" =>$lastUsername
         ));
     }
+
      /**
-     * @Route("/logout/", name="logout")
+     * @Route("/e01/logout/", name="logout")
      */
     public function logoutAction(){
 

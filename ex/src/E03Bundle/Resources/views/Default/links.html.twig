@@ -1,0 +1,17 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block body %}
+<a href="/e01/login/"> Login </a>
+<a href="/e01/register/"> Register </a>
+{% for t in post %}
+            <ol>
+                <li>{{t.title}}</li>
+                <li>{{t.creator}}</td>
+                <li>{{t.date}}</li>
+            </ol>
+{% endfor %}
+{% endblock %}

@@ -23,11 +23,15 @@ security:
             form_login:
                 login_path: login
                 check_path: login
+                default_target_path: /e05/
+
             logout:
-                path: /logout
-                target: /
+                path: logout
+                target: login
 
     access_control:
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: /e02/admin, roles: ROLE_ADMIN }
+        - { path: /e03/create, roles: IS_AUTHENTICATED_FULLY }
         

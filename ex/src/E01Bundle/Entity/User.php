@@ -2,6 +2,7 @@
 
 namespace E01Bundle\Entity;
 
+use E03Bundle\Entity\Post;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -37,6 +38,27 @@ class User implements UserInterface
     private $password;
 
 
+      /**
+     * @var array
+     *
+     * @ORM\Column(type="json_array", nullable=true)
+     */
+    private $roles = [];
+
+    /**
+     * @var int
+     *
+     * @ORM\OneToMany(targetEntity="user", mappedBy="user")
+     */
+    private $post;
+
+       /**
+     * @var array
+     *
+     * @ORM\Column(name="likes",type="json_array", nullable=true)
+     */
+    private $likes = [];
+
     /**
      * Get id.
      *
@@ -45,6 +67,16 @@ class User implements UserInterface
     public function getId()
     {
         return $this->id;
+    }
+
+     /**
+     * Get likes.
+     *
+     * @return int
+     */
+    public function getLikes()
+    {
+        return $this->likes;
     }
 
     /**
@@ -60,6 +92,20 @@ class User implements UserInterface
 
         return $this;
     }
+
+     /**
+     * Set username.
+     *
+     * @param array $likes
+     *
+     * @return User
+     */
+    public function setLikes($likes)
+    {
+        $this->likes[] = $likes;
+        return $this;
+    }
+
 
     /**
      * Get username.
@@ -86,20 +132,62 @@ class User implements UserInterface
     }
 
     /**
-     * Get password.
+     * Set roles.
      *
-     * @return string
+     * @param array $roles
+     *
+     * @return User
+     */
+    public function setRoles($roles)
+    {
+        $this->roles = $roles;
+        return $this;
+    }
+    
+    /**
+     * Returns the password used to authenticate the user.
+     *
+     * This should be the encoded password. On authentication, a plain-text
+     * password will be salted, encoded, and then compared to this value.
+     *
+     * @return string|null The encoded password if any
      */
     public function getPassword()
     {
         return $this->password;
     }
+  
+    /**
+     * Set post.
+     *
+     * @param post 
+     *
+     * @return post
+     */
+    public function setPost($post)
+    {
+        $this->post = $post;
 
+        return $this;
+    }
+
+     /**
+     * Returns the roles granted to the user.
+     *
+     *     public function getRoles()
+     *     {
+     *         return ['ROLE_USER'];
+     *     }
+     *
+     * Alternatively, the roles might be stored on a ``roles`` property,
+     * and populated in any number of different ways when the user object
+     * is created.
+     *
+     * @return array The user roles
+     */
     public function getRoles()
     {
-        return [
-            'ROLE_USER'
-        ];
+        return $this->roles;
     }
 
     public function getSalt()

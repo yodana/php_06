@@ -3,6 +3,11 @@ imports:
     - { resource: security.yml }
     - { resource: services.yml }
     - { resource: "@E01Bundle/Resources/config/services.yml" }
+    - { resource: "@E02Bundle/Resources/config/services.yml" }
+    - { resource: "@E03Bundle/Resources/config/services.yml" }
+    - { resource: "@E04Bundle/Resources/config/services.yml" }
+    - { resource: "@E05Bundle/Resources/config/services.yml" }
+    - { resource: "@E06Bundle/Resources/config/services.yml" }
 
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
